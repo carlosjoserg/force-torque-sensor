@@ -3,35 +3,34 @@ project(force_torque_sensor)
 
 find_package(LibXml2 REQUIRED)
 
-find_package(catkin REQUIRED COMPONENTS 
-  roscpp 
-  message_generation 
+find_package(catkin REQUIRED COMPONENTS
+  roscpp
+  message_generation
   std_msgs
-  geometry_msgs 
+  geometry_msgs
 )
 
 catkin_package()
 
 
-include_directories(include 
+include_directories(include
   ${LIBXML2_INCLUDE_DIR}
   ${catkin_INCLUDE_DIRS}
+  /home/carlos/Golem/packages/Tools/SM/include
+  /home/carlos/Golem/packages/Core/Sys/include
+  /home/carlos/Golem/packages/Core/Defs/include
+  /home/carlos/Golem/packages/Core/Math/include
 )
 
-add_library(FTSensor
-  src/FTSensor.cpp
-  )
+link_directories(
+  /home/carlos/lib
+)
 
-add_executable(ft_sensor_hw 
+
+add_executable(ft_sensor_hw
   src/ft_sensor_hw.cpp
 )
-
-add_dependencies(ft_sensor_hw 
-  FTSensor
-)
-
 target_link_libraries(ft_sensor_hw
-  FTSensor
-  ${LIBXML2_LIBRARIES}
+  GolemSys GolemMath GolemSM
   ${catkin_LIBRARIES}
 )
