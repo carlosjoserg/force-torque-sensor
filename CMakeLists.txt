@@ -16,14 +16,14 @@ catkin_package()
 include_directories(include
   ${LIBXML2_INCLUDE_DIR}
   ${catkin_INCLUDE_DIRS}
-  /home/carlos/Golem/packages/Tools/SM/include
-  /home/carlos/Golem/packages/Core/Sys/include
-  /home/carlos/Golem/packages/Core/Defs/include
-  /home/carlos/Golem/packages/Core/Math/include
+  /home/memnone/Golem/packages/Tools/SM/include
+  /home/memnone/Golem/packages/Core/Sys/include
+  /home/memnone/Golem/packages/Core/Defs/include
+  /home/memnone/Golem/packages/Core/Math/include
 )
 
 link_directories(
-  /home/carlos/lib
+  /home/memnone/lib
 )
 
 
@@ -31,6 +31,6 @@ add_executable(ft_sensor_hw
   src/ft_sensor_hw.cpp
 )
 target_link_libraries(ft_sensor_hw
-  GolemSys GolemMath GolemSM
+  GolemSys GolemMath GolemSM GolemDefs
   ${catkin_LIBRARIES}
 )
